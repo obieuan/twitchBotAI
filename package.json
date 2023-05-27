@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "openai": "^3.2.1",
+    "tmi.js": "^1.8.5"
+  }
+}
