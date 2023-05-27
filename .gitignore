@@ -1,9 +1,0 @@
-#Evitar que se suba el .gitignore
-.gitignore
-# Ignora la carpeta node_modules
-node_modules
-# Ignora la carpeta de claves y tokens
-tokens
-# Ignora archivos de python que no deben subirse
-config.py
-testGPT.py
