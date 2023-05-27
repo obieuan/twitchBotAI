@@ -1,6 +1,6 @@
 # ObiAI
 
-ObiAI a Python script to integrate your own bot to Twitch powered by ChatGPT and Twitchio libraries
+ObiAI a Python based script to integrate your own bot to Twitch, bot is powered by ChatGPT and Twitchio libraries
 
 ## Installation
 
@@ -36,8 +36,8 @@ CHANNELS = ['channel1', 'channel2', 'channel3'] #You can add as many as you want
 ```
 Once everything is properly configured, just run **ObiAI.py**
 ## Current Functions:
-Ability to interact with several users and remember last 10 conversations
-Ability to interact with several channels at the same time
+- Ability to interact with several users and remember last 10 conversations. 
+- Ability to interact with several channels at the same time.
 
 ## Contributing
 
