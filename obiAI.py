@@ -1,31 +1,30 @@
 import twitchio
 from twitchio.ext import commands
 from twitchio.ext.commands import Context
-from config import TWITCH_CLIENT_ID, TWITCH_BOT_NAME, TWITCH_BOT_TOKEN, OPENAI_API_KEY
-
+from config import TWITCH_BOT_NAME, TWITCH_BOT_TOKEN, OPENAI_API_KEY, CHANNELS
 
 import openai
 
 # Configuración
 bot_nick = TWITCH_BOT_NAME  # Nombre de tu bot en Twitch
-channel = TWITCH_CLIENT_ID  # Nombre del canal al que te quieres conectar
-#channels = ['channel1', 'channel2', 'channel3']  # Lista de canales a los que te quieres conectar
+channels = CHANNELS  # Lista de canales a los que te quieres conectar
 openai.api_key = OPENAI_API_KEY  # Clave de API de OpenAI
 
 # Clase del bot
 class Bot(commands.Bot):
     def __init__(self):
-        super().__init__(token=TWITCH_BOT_TOKEN, prefix='!', initial_channels=[channel])
+        super().__init__(token=TWITCH_BOT_TOKEN, prefix='!', initial_channels=[channel for channel in channels])
 
     async def event_ready(self):
-        print(f'Conectado a {channel}')        
+        for channel in channels:
+            print(f'Conectado a {channel}')
 
-        # Enviar mensaje de bienvenida al canal
-        channel_obj = self.get_channel(channel)  # Obtener objeto Channel del canal
-        if channel_obj:
-            await channel_obj.send("Hola soy una IA")
-        else:
-            print(f"No se pudo obtener el objeto Channel para el canal {channel}")
+            # Enviar mensaje de bienvenida al canal
+            channel_obj = self.get_channel(channel)  # Obtener objeto Channel del canal
+            if channel_obj:
+                await channel_obj.send("Hola soy una IA")
+            else:
+                print(f"No se pudo obtener el objeto Channel para el canal {channel}")
 
     async def event_message(self, message):
         # Ignorar mensajes propios
